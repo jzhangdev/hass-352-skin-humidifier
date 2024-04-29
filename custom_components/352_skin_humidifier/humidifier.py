@@ -61,7 +61,7 @@ class SkinHumidifier(CoordinatorEntity, HumidifierEntity):
         device_property = device.data["property"]
         self._attr_is_on = bool(device_property["PowerSwitch"]["value"])
         self._attr_current_humidity = device_property["RelativeHumidity"]["value"]
-        self._attr_target_humidity = device_property["SetHumidity"]["value"]
+        self._attr_target_humidity = device_property["targetHumidity"]["value"]
         # 1: Auto, 2: Comfort, 3: Sleep, 4: Humidity First, 5: Wind speed first
         self._attr_mode = self.available_modes[device_property["WorkMode"]["value"] - 1]
         self._attr_current_temperature = device_property["CurrentTemperature"]["value"]
